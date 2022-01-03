@@ -12,3 +12,17 @@ class Appointment(models.Model):
     covid_positive = models.CharField(max_length=10)
     date_time = models.DateTimeField(default=None)
     patient_description = models.TextField(default="")
+
+
+
+OXYGEN_TYPE_CHOICES=(
+    ('CGS', 'Compressed Gas System'),
+    ('POC', 'Portable Oxygen Concentrators'),
+    ('LOS', 'Liquid Oxygen Systems'),
+)
+
+
+class OxygenAvailability(models.Model):
+    oxygen_type = models.CharField(choices=OXYGEN_TYPE_CHOICES, max_length=4, default='CGS')
+    amount = models.PositiveSmallIntegerField(default=0)
+    address = models.TextField(default="")
